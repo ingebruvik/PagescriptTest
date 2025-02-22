@@ -3,5 +3,11 @@
   "appFolders": [],
   "testFolders": [],
   "bcptTestFolders": [],
-  "pageScriptingTests":["recordings/*.yml"]
+  {
+  "country": "no",
+  "appFolders": [],
+  "testFolders": [],
+  "bcptTestFolders": [],
+  "pageScriptingTests":[]
+}
 }
