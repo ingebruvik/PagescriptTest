@@ -1,0 +1,163 @@
+name: OpprettKunde
+start:
+  profile: null
+steps:
+  - type: navigate
+    target:
+      - page: Business Manager Role Center
+      - action: Sales_CustomerList
+    description: Navigate to <caption>Kunder</caption>
+  - type: page-shown
+    source:
+      page: Customer List
+    modal: false
+    runtimeId: b6q
+    description: Page <caption>Kunder</caption> was shown.
+  - type: invoke
+    target:
+      - page: Customer List
+        runtimeRef: b6q
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>Ny</caption>
+  - type: page-shown
+    source:
+      page: Select Customer Templ. List
+    modal: true
+    runtimeId: bia
+    description: Page <caption>Velg en mal for en ny kunde</caption> was shown.
+  - type: set-current-row
+    target:
+      - page: Select Customer Templ. List
+        runtimeRef: bia
+      - repeater: Control1
+    targetRecord:
+      relative: 1
+    description: Set current row in <caption>Control1</caption>
+  - type: invoke
+    target:
+      - page: Select Customer Templ. List
+        runtimeRef: bia
+    invokeType: LookupOk
+    description: Invoke LookupOk on <caption>Velg en mal for en ny kunde</caption>
+  - type: page-closed
+    source:
+      page: Select Customer Templ. List
+    runtimeId: bia
+    description: Page <caption>Velg en mal for en ny kunde</caption> was closed.
+  - type: page-shown
+    source:
+      page: Customer Card
+    modal: false
+    runtimeId: bje
+    description: Page <caption>Ny - Kundekort</caption> was shown.
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: Name
+    value: ="Customer " & Today()
+    description: Input <value>"Customer " &amp; Today()</value> into <caption>Navn</caption>
+  - type: focus
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: IC Partner Code
+    description: Focus <caption>KI-partnerkode</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: Address
+    value: Råvarden 109
+    description: Input <value>Råvarden 109</value> into <caption>Adresse</caption>
+  - type: focus
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: Address 2
+    description: Focus <caption>Adresse 2</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: City
+    value: ""
+    description: Input <value></value> into <caption>Sted</caption>
+  - type: focus
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: Post Code
+    description: Focus <caption>Postnr.</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: bje
+      - field: Post Code
+    value: "5239"
+    description: Input <value>5239</value> into <caption>Postnr.</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: ba0h
+      - field: Gen. Bus. Posting Group
+    value: INNEN
+    isFilterAsYouType: true
+    description: Input <value>INNEN</value> into <caption>Bokføringsgruppe – firma</caption>
+  - type: page-shown
+    source:
+      page: lookup:Gen. Bus. Posting Group
+    modal: false
+    runtimeId: baaw
+    description: Page <caption>Merk</caption> was shown.
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: ba0h
+      - field: Gen. Bus. Posting Group
+    value: INNENL
+    isFilterAsYouType: true
+    description: Input <value>INNENL</value> into <caption>Bokføringsgruppe –
+      firma</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: ba0h
+      - field: Gen. Bus. Posting Group
+    value: INNENLANDD
+    isFilterAsYouType: true
+    description: Input <value>INNENLANDD</value> into <caption>Bokføringsgruppe –
+      firma</caption>
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: ba0h
+      - field: Gen. Bus. Posting Group
+    value: INNENLANDS
+    isFilterAsYouType: true
+    description: Input <value>INNENLANDS</value> into <caption>Bokføringsgruppe –
+      firma</caption>
+  - type: invoke
+    target:
+      - page: lookup:Gen. Bus. Posting Group
+        runtimeRef: baaw
+      - repeater: repeater
+    parameters:
+      AlwaysCommit: true
+    description: Invoke row on <caption>Bokføringsgruppe - firma</caption>
+  - type: page-closed
+    source:
+      page: lookup:Gen. Bus. Posting Group
+    runtimeId: baaw
+    description: Page <caption>Merk</caption> was closed.
+  - type: validate
+    target:
+      - page: Customer Card
+        runtimeRef: baor
+      - field: Phone No.
+    value: ""
+    description: Valider <caption>Telefonnr.</caption> <operation>er
+      ikke</operation> <value></value>
+    operation: <>
+description: Test recording
