@@ -1,0 +1,7 @@
+{
+  "country": "no",
+  "appFolders": [],
+  "testFolders": [],
+  "bcptTestFolders": [],
+  "pageScriptingTests":["recordings/*.yml"]
+}
