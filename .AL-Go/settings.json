@@ -3,5 +3,5 @@
   "appFolders": [],
   "testFolders": [],
   "bcptTestFolders": [],
-  pageScriptingTests["recordings/*.yml"]
+  "pageScriptingTests":["recordings/*.yml"]
 }
